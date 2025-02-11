@@ -8,7 +8,9 @@
     flex: 1;
 }
 .tv_show_detail {
+    margin: auto;
     flex: 2;
+    width: 80%;
 }
 .recommentations {
     flex: 1;
