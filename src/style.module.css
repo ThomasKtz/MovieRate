@@ -6,13 +6,10 @@
 }
 .header {
     flex: 1;
-    background-color: red;
 }
 .tv_show_detail {
     flex: 2;
-    background-color: blue;
 }
 .recommentations {
     flex: 1;
-    background-color: green;
 }

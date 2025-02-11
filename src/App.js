@@ -1,9 +1,20 @@
 import s from "./style.module.css";
 import "./global.css";
 import { TVShowAPI } from "./api/tv-show";
+import { use, useState, useEffect } from "react";
 
 function App() {
-    TVShowAPI.fetchPopulars();
+    // TVShowAPI.fetchPopulars();
+    const [currentTVShow, setCurrentTVShow] = useState(null);
+    async function fetchPopulars() {
+        const populars = await TVShowAPI.fetchPopularsAll();
+        setCurrentTVShow(populars[0]);
+    }
+    useEffect(() => {
+        fetchPopulars();
+    }, []);
+    console.log(currentTVShow);
+
     return (
         <div className={s.main_container}>
             <div className={s.header}>

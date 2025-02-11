@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL, API_KEY_PARAM } from "./config";
 
 export class TVShowAPI {
-    static async fetchPopulars() {
+    static async fetchPopularsAll() {
         const response = await axios.get(
             `${BASE_URL}tv/popular${API_KEY_PARAM}`
         );
