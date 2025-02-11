@@ -3,7 +3,7 @@ import "./global.css";
 import { TVShowAPI } from "./api/tv-show";
 import { use, useState, useEffect } from "react";
 import { BACKDROP_BASE_URL } from "./api/config";
-import { TVShowDetails } from "./components/TVShowDetails";
+import { TVShowDetails } from "./components/TVShowDetails/TVShowDetails";
 
 function App() {
     // TVShowAPI.fetchPopulars();
