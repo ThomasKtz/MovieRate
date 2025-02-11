@@ -1,7 +1,9 @@
-// 4e226c3d20142e7c294fb52e075411ef
 import s from "./style.module.css";
 import "./global.css";
+import { TVShowAPI } from "./api/tv-show";
+
 function App() {
+    TVShowAPI.fetchPopulars();
     return (
         <div className={s.main_container}>
             <div className={s.header}>
