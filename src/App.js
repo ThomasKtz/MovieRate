@@ -6,6 +6,7 @@ import { BACKDROP_BASE_URL } from "./api/config";
 import { TVShowDetails } from "./components/TVShowDetails/TVShowDetails";
 import { Logo } from "./components/Logo/logo";
 import logo from "./assets/images/logo.png";
+import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
 
 function App() {
     const [currentTVShow, setCurrentTVShow] = useState(null);
@@ -16,6 +17,7 @@ function App() {
     useEffect(() => {
         fetchPopulars();
     }, []);
+    console.log(currentTVShow);
     return (
         <div
             className={s.main_container}
@@ -42,7 +44,9 @@ function App() {
             <div className={s.tv_show_detail}>
                 {currentTVShow && <TVShowDetails TVShow={currentTVShow} />}
             </div>
-            <div className={s.recommentations}>Recommendations</div>
+            <div className={s.recommentations}>
+                {currentTVShow && <TVShowListItem TVShow={currentTVShow} />}
+            </div>
         </div>
     );
 }
