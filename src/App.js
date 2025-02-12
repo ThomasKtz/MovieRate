@@ -1,23 +1,38 @@
 import s from "./style.module.css";
 import "./global.css";
-import { TVShowAPI } from "./api/tv-show";
+import { TVShowAPI, TVShowRecommendationsAPI } from "./api/tv-show";
 import { use, useState, useEffect } from "react";
 import { BACKDROP_BASE_URL } from "./api/config";
 import { TVShowDetails } from "./components/TVShowDetails/TVShowDetails";
 import { Logo } from "./components/Logo/logo";
 import logo from "./assets/images/logo.png";
 import { TVShowListItem } from "./components/TVShowListItem/TVShowListItem";
+import { TVShowList } from "./components/TVShowList/TVShowList";
 
 function App() {
     const [currentTVShow, setCurrentTVShow] = useState(null);
+    const [recommendations, setRecommendations] = useState([]);
     async function fetchPopulars() {
         const populars = await TVShowAPI.fetchPopularsAll();
         setCurrentTVShow(populars[0]);
     }
+    async function fetchRecommendations() {
+        if (currentTVShow) {
+            const recommendations =
+                await TVShowRecommendationsAPI.fetchRecommendations(
+                    currentTVShow.id
+                );
+            setRecommendations(recommendations.slice(0, 10));
+        }
+    }
     useEffect(() => {
         fetchPopulars();
     }, []);
-    console.log(currentTVShow);
+    useEffect(() => {
+        fetchRecommendations();
+    }, [currentTVShow]);
+    console.log("current", currentTVShow);
+    console.log(" reco", recommendations);
     return (
         <div
             className={s.main_container}
@@ -45,7 +60,9 @@ function App() {
                 {currentTVShow && <TVShowDetails TVShow={currentTVShow} />}
             </div>
             <div className={s.recommentations}>
-                {currentTVShow && <TVShowListItem TVShow={currentTVShow} />}
+                {recommendations && (
+                    <TVShowList TVShowRecommendation={recommendations} />
+                )}
             </div>
         </div>
     );
