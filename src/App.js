@@ -31,8 +31,7 @@ function App() {
     useEffect(() => {
         fetchRecommendations();
     }, [currentTVShow]);
-    console.log("current", currentTVShow);
-    console.log(" reco", recommendations);
+
     return (
         <div
             className={s.main_container}
@@ -61,7 +60,10 @@ function App() {
             </div>
             <div className={s.recommentations}>
                 {recommendations && (
-                    <TVShowList TVShowRecommendation={recommendations} />
+                    <TVShowList
+                        TVShowRecommendation={recommendations}
+                        onClickItem={setCurrentTVShow}
+                    />
                 )}
             </div>
         </div>
