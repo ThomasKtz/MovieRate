@@ -4,9 +4,10 @@ import { TVShowAPI } from "./api/tv-show";
 import { use, useState, useEffect } from "react";
 import { BACKDROP_BASE_URL } from "./api/config";
 import { TVShowDetails } from "./components/TVShowDetails/TVShowDetails";
+import { Logo } from "./components/Logo/logo";
+import logo from "./assets/images/logo.png";
 
 function App() {
-    // TVShowAPI.fetchPopulars();
     const [currentTVShow, setCurrentTVShow] = useState(null);
     async function fetchPopulars() {
         const populars = await TVShowAPI.fetchPopularsAll();
@@ -15,9 +16,6 @@ function App() {
     useEffect(() => {
         fetchPopulars();
     }, []);
-    console.log(currentTVShow);
-    // console.log(currentTVShow.name);
-
     return (
         <div
             className={s.main_container}
@@ -30,8 +28,11 @@ function App() {
             <div className={s.header}>
                 <div className="row">
                     <div className="col-4">
-                        <div>Logo</div>
-                        <div>Subtitle</div>
+                        <Logo
+                            image={logo}
+                            title="MovieRate"
+                            subtitle="Find what you may like !"
+                        />
                     </div>
                     <div className="col-md-12 col-lg-4">
                         <input type="text" />
