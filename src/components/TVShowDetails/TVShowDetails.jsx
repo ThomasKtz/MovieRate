@@ -5,7 +5,8 @@ export function TVShowDetails({ TVShow }) {
     const rating = TVShow.vote_average;
     return (
         <div>
-            <div className={s.title}>{TVShow.name}</div>
+            <div className={s.title}>{TVShow.name ?? TVShow.title}</div>
+
             <div>
                 <StarRating rating={rating} />
             </div>

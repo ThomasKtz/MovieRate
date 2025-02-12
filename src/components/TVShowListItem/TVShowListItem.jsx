@@ -7,9 +7,9 @@ export function TVShowListItem({ TVShow, onClick }) {
             <img
                 className={s.img}
                 src={`${SMALL_IMG_COVER_BASE_URL}${TVShow.backdrop_path}`}
-                alt={TVShow.name}
+                alt={TVShow.name ?? TVShow.title}
             />
-            <div className={s.title}>{TVShow.name}</div>
+            <div className={s.title}>{TVShow.name ?? TVShow.title}</div>
         </div>
     );
 }
