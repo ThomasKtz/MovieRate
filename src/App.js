@@ -12,7 +12,7 @@ import { SearchBar } from "./components/SearchBar/SearchBar";
 function App() {
     const [currentMedia, setCurrentMedia] = useState(null);
     const [recommendations, setRecommendations] = useState([]);
-    const [isMovieMode, setIsMovieMode] = useState(false); // Toggle séries/films
+    const [isMovieMode, setIsMovieMode] = useState(false);
 
     async function fetchPopulars() {
         const populars = await MediaAPI.fetchPopularsAll(isMovieMode);
@@ -71,7 +71,7 @@ function App() {
                             onClick={() => setIsMovieMode(!isMovieMode)}
                         >
                             {isMovieMode
-                                ? "Switch to TV Shows"
+                                ? "Switch to TVShows"
                                 : "Switch to Movies"}
                         </button>
                     </div>
